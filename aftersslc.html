@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Colleges for UG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        li:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.03);
+        }
+        .college-info {
+            display: bottom;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            transition: opacity 0.3s ease;
+        }
+        .college-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Best Colleges after Completing SSLC </h1>
+        <label for="stream-select">Select Stream:</label>
+        <select id="stream-select" onchange="filterColleges()">
+            <option value="all">All</option>
+            <option value="science">Science</option>
+            <option value="commerce">Commerce</option>
+            <option value="arts">Arts</option>
+        </select>
+        <p>Here are some of the best colleges you can consider for your PU:</p>
+        <ul id="college-list">
+            <!-- College list here -->
+        </ul>
+    </div>
+
+    <script>
+        function toggleInfo(collegeId) {
+            var collegeInfo = document.getElementById(collegeId);
+            collegeInfo.style.display = collegeInfo.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function filterColleges() {
+            var selectedStream = document.getElementById('stream-select').value;
+            var colleges = document.querySelectorAll('li');
+
+            colleges.forEach(function(college) {
+                var collegeStream = college.getAttribute('data-stream');
+
+                if (selectedStream === 'all' || collegeStream === selectedStream) {
+                    college.style.display = 'block';
+                } else {
+                    college.style.display = 'none';
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Populate the college list
+            var collegeList = document.getElementById("college-list");
+            var colleges = [ 
+                {
+                    name: "Nagarjuna PU College",
+                    stream: "science",
+                    info: "Nagarjuna pu College is founded on the Philosophy of Quality Education, Human Values and Professionalism in Academics for Achievement of Excellence in Education",
+                    imageUrl: "https://content.jdmagicbox.com/v2/comp/bangalore/i3/080pxx80.xx80.120524164746.k8i3/catalogue/nagarjuna-pre-university-college-yelahanka-bangalore-institutes-llzwfd3q25.jpg",
+                    websiteUrl: "https://nagarjunapucollege.co.in/"
+                },
+                {
+                    name: "Mahesh PU College ",
+                    stream: "science",
+                    info: "Mahesh PU College is committed to providing value-based education, nurturing the talents of students, and preparing them for a rapidly changing world.",
+                    imageUrl: "https://collegemarker.com/college/home1.jpg",
+                    websiteUrl: "https://www.maheshpucngb.com/"
+                },
+                
+                  {
+                    name: "St Josephs PU College",
+                    stream: "science",
+                    info: "St Joseph's College Bangalore is ranked 2nd for BCA by India Today 2023, 18th by Outlook 2023 for Arts, and 18th by The Week 2023 for Arts. ",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrMNRiVziXgQr3CB1oXyWhNCKMWdPNgUJcXg&s",
+                    websiteUrl: "https://www.sjpuc.in/"
+                },
+{
+                    name: "Mount Carmel PU College",
+                    stream: "science",
+                    info: "Mount Carmel College for Women, Bengaluru, managed by the Congregation of the Carmelite Sisters of St. Teresa, was established in 1948, to meet the escalating demand for the education of women in India.",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_7TLtJ2PbU0I8tTCcfgVwWXCt1wpPgz_GYA&s",
+                    websiteUrl: "https://www.mountcarmelpucollege.org/"
+                },
+                {
+                    name: "Reva  PU College",
+                    stream: "commerce",
+                    info: "REVA group of institutions is located in three campuses across Bangalore at Ganganagar, Sanjaynagar, and Kattigenahalli. The main campus at Kattigenahalli has amenities of International standards for its students and it is located just off the International Airport with 52 acres of lush green environment. ",
+                    imageUrl: "https://www.revapucollege.edu.in/images/sanjaynagar/inner-images/san.jpg",
+                    websiteUrl: "https://www.revapucollege.edu.in/"
+                },
+                {
+                    name: "Vidhya Mandir pu College",
+                    stream: "science",
+                    info: "Vidya Mandir Ind. PU College came into being in the year 2001 with a modest strength of hundred students and nine lecturers.",
+                    imageUrl: "https://content.jdmagicbox.com/v2/comp/bangalore/78/080p4304078/catalogue/vidya-mandir-ind-pre-university-college-malleswaram-bangalore-pre-university-institutes-wvzdxq.jpg",
+                    websiteUrl: "https://vmipuc.org/"
+                },
+                {
+                    name: "sri sai PU  College",
+                    stream: "science",
+                    info: "Study Boosting Environment Sri Sai Pu College campuses are well located and placed away from the city chaos to aid students’ learning experience. The classrooms are well lit and have state of the art infrastructure that includes labs, playground, study halls and much more.",
+                    imageUrl: "https://static.wixstatic.com/media/f260d0_e64f9126c142447aa2f2054fd5128d4d~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_2500,h_1666,al_c/f260d0_e64f9126c142447aa2f2054fd5128d4d~mv2_d_6000_4000_s_4_2.jpg",
+                    websiteUrl: "https://www.srisaipucollege.com/"
+                },
+                {
+                    name: "BEL PU College",
+                    stream: "commerce",
+                    info: "The Bharath Electronics PU College was established on 19th June 1981 and inaugurated by Shri. Shankar Rao, Hon. Education Minister, Karnataka Govt. in the presence of Shri. N L Krishnan, MD, BEL.",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfnqSOeGXObTS5EjhEvgjJGA9RZv0p5oNsHA&s",
+                    websiteUrl: "https://pu.beei.edu.in/"
+                },
+                {
+                    name: "CMR PU College",
+                    stream: "commerce",
+                    info: "CMR National Pre-University College is a community of learners, thinkers, doers and change-makers, where we stand for a sense of togetherness, collaboration and unity",
+                    imageUrl: "https://content.jdmagicbox.com/v2/comp/bangalore/86/080p4216086/catalogue/c-m-r-national-pu-college-hrbr-layout-bangalore-colleges-de588.jpg",
+                    websiteUrl: "https://npuc.cmr.ac.in/"
+                },
+           
+                {
+                    name: "Sheshadripuram PU College",
+                    stream: "science",
+                    info: "To constantly strive towards meeting this social need by inclusion and expansion of new streams of educations in its institutions and provide world class infrastructure for learning, research and application of knowledge.",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM8zB5mVmsRMMpk9t-t_uojHABUCPKCqHmOw&s",
+                    websiteUrl: "https://www.spucmain.ac.in/"
+                },
+                {
+                    name: "New Horizon College",
+                    stream: "commerce",
+                    info: "We are committed to fostering an environment which inspires, innovates, and discovers. A place where youngsters may learn, create, and develop their academic and behavioral skills.",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_F_YWx785b3uDIJP-GBclBh5LEut5Z7U4oQ&s",
+                    websiteUrl: "https://nhpuc.in/"
+                },
+                {
+                    name: "Christ pu College",
+                    stream: "science",
+                    info: "Christ Junior College is a premier educational institution in Bangalore offering education at both the Karnataka Pre-University Course (PUC) and the International Baccalaureate Diploma Programme(IBDP) levels. ",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjdY3J2Be2sc6lxFTWavnQ4eAXM0qml6oqjA&s",
+                    websiteUrl: "https://www.christjuniorcollege.in/"
+                },
+                {
+                    name: "The Regency pu  College",
+                    stream: "commerce",
+                    info: "Regency Pu College is one of the best PU colleges in Vidyaranyapura Bangalore. We understand the importance of quality education and strive to provide an exceptional learning experience for students.",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2hm_5lvsCx1lGcRp_tAraEx6kv_tODFb1A&s",
+                    websiteUrl: "https://regencypucollege.com/"
+                },
+
+                {
+                    name: "Sambram  College",
+                    stream: "commerce",
+                    info: "The Institute was established by a team of experts who are a perfect blend of industry and academia. The founders of this Institution and others, who are associated with us, are eminent educationists, distinguished personalities and philanthropic minded persons who have laid a solid foundation and are nurturing it to grow phenomenally.",
+                    imageUrl: "https://collegekeeda.com/wp-content/uploads/2023/11/1552902664php6IZLcB.webp",
+                    websiteUrl: "https://www.sambhram.org/sambhram-pre-university-college/"
+                },
+                {
+                    name: "Presidency  College",
+                    stream: "science",
+                    info: "Presidency PU College is leveraged as a pristine institution in Bengaluru City and has a proven track record of delivering excellence to students pursuing education in Science and commerce Stream. The college is affiliated to PUE Board, Karnataka. ",
+                    imageUrl: "https://content.jdmagicbox.com/v2/comp/bangalore/67/080p2510767/catalogue/presidency-college-hebbal-kempapura-bangalore-institutes-3fwr0i9.jpg",
+                    websiteUrl: "https://www.presidencypucollege.com/"
+                },
+                {
+                    name: "Jain College",
+                    stream: "commerce",
+                    info: "JAIN College, as the flagship institute of the JAIN Group founded by Dr. Chenraj Roychand, leads in providing a distinct combination of academic excellence and practical application to address real-world challenges. ",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIs7trm-rtAgozf4R6nDab80vlYwb0PhlGOg&s",
+                    websiteUrl: "https://www.jaincollege.ac.in/"
+                },
+                
+                {
+                    name: "MLAC  College",
+                    stream: "Commerce",
+                    info: "Maharani Lakshmi Ammanni College for Women Autonomous, MLACW (now mLAC) is an institution of excellence located strategically in the vicinity of national institutes of repute, such as Indian Institute of Science, Institute of Wood Science & Technology, National Institute of Advanced Studies, Raman Research Institute and Central Power Research Institute. ",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFjkZ_ldXPV6zgAt5VNvDqhK_JZLyhQ8AUXw&s",
+                    websiteUrl: "https://www.mlacw.edu.in/"
+                },
+                {
+                    name: "Mount Carmel College",
+                    stream: "arts",
+                    info: "Mount Carmel PU College for Women, Bengaluru, managed by the Congregation of the Carmelite Sisters of St. Teresa, was established in 1948, to meet the escalating demand for the education of women in India",
+                    imageUrl: "https://images.collegedunia.com/public/college_data/images/campusimage/1697615226IMG_3378.JPG",
+                    websiteUrl: "https://www.mountcarmelpucollege.org/"
+                },
+                {
+                    name: "Baldwin womens methodist College",
+                    stream: "arts",
+                    info: "The Pre-University Course approved by the Karnataka Government comes directly under Education Board of Karnataka State. The Pre-University affiliation no: ED120 SJHH 91 Bangalore, Dated 08-08-1991",
+                    imageUrl: "https://images.collegedunia.com/public/college_data/images/appImage/6762_BWMC_New.jpg",
+                    websiteUrl: "https://baldwinwomensmethodistcollege.co.in/welcome-baldwin-womens-methodist-college"
+                },
+                {
+                    name: "Indian academy  College",
+                    stream: "arts",
+                    info: " Indian Academy Pre-University College was Established in 1999, Indian Academy Pre University College stands as a pinnacle in the realm of higher secondary education",
+                    imageUrl: "https://images.collegedunia.com/public/college_data/images/appImage/1959_IAPUC_APP.jpg",
+                    websiteUrl: "https://iapuc.edu.in/"
+                },
+                {
+                    name: "AI-Ameen  College",
+                    stream: "arts",
+                    info: "Al-Ameen Education Society was established in 1966 under the guidance of Dr. Mumtaz Ahmed Khan, the esteemed founder, and his dedicated team",
+                    imageUrl: "https://collegemarker.com/college/Al%20Ameen%20PU%20college%20Bangalore.jpg",
+                    websiteUrl: "https://alameenpucollege.org/"
+                },
+                {
+                    name: "BES  College",
+                    stream: "arts",
+                    info: "BES Institution was founded by a group of visionaries under the leadership of Sri. B.L LakkeGowda (Retd. Spl Deputy Commissioner). BES College was established in the year 1972",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCXTwfMA5QGgW6kReLa1yhNJ8Ja-YEKEit7A&s",
+                    websiteUrl: "https://besdegreecollege.in/about-us/"
+                },
+                {
+                    name: "Bishop Cotton  College",
+                    stream: "arts",
+                    info: "Bishop Cotton Women’s Christian College is an offshoot of the Bishop Cotton Girls’ School and carries with it a rich tradition of more than 150 years of experience in imparting education. ",
+                    imageUrl: "https://www.galaxyeduworld.com/storage/college_page/5dc6b52bba289_1.jpg",
+                    websiteUrl: "http://www.bcwcc.org.in/"
+                },
+                {
+                    name: "BMS  College",
+                    stream: "arts",
+                    info: "B.M.S. Pre-University College for Women was established by the great visionary’s Late Sri. B.M. Sreenivasaiah and his son Late Sri. B.S. Narayan, under the patronage of B.M.S. Educational Trust.",
+                    imageUrl: "https://img.jagranjosh.com/images/2022/December/1122022/BMS-College-of-Engineering-Bangalore-Campus-View-3.jpg",
+                    websiteUrl: "https://www.bmspucw.com/"
+                },
+
+            ];
+
+            colleges.forEach(function(college) {
+                var li = document.createElement("li");
+                li.setAttribute("data-stream", college.stream);
+                li.innerHTML = `
+                    <a href="${college.websiteUrl}" target="_blank">${college.name}</a>
+                    <div class="college-image" style="background-image: url('${college.imageUrl}')"></div>
+                    <div class="college-info">
+                        <p>${college.info}</p>
+                    </div>
+                `;
+                collegeList.appendChild(li);
+            });
+
+            filterColleges();
+        });
+    </script>
+</body>
+</html>

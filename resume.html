@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("img/header.gif");
+            background-size: cover;
+            margin: 170px;
+            padding: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            width: 100%;
+            margin: 20px;
+            padding: 20px;
+            background-color: #e6f7ff; /* Light blue color */
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        label {
+            width: 100%;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #resume-preview {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #ats-result {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            color: #155724;
+        }
+        h1, h2, h3 {
+            margin-top: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resume Builder</h1>
+        <p>Ensure your resume is ATS-friendly by using simple formatting and including relevant keywords from the job description.</p>
+        <form id="resume-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]+" required>
+
+            <label for="experience">Experience:</label>
+            <textarea id="experience" name="experience" rows="4" required></textarea>
+            
+            <label for="skills">Skills:</label>
+            <textarea id="skills" name="skills" rows="2" required></textarea>
+            
+            <label for="education">Education:</label>
+            <textarea id="education" name="education" rows="4" required></textarea>
+            
+            <label for="education-level">Education Level:</label>
+            <select id="education-level" name="education-level">
+                <option value="High School">High School</option>
+                <option value="Associate Degree">Associate Degree</option>
+                <option value="Bachelor's Degree">Bachelor's Degree</option>
+                <option value="Master's Degree">Master's Degree</option>
+                <option value="Doctorate">Doctorate</option>
+            </select>
+            
+            <label for="languages">Languages:</label>
+            <textarea id="languages" name="languages" rows="2" required></textarea>
+            
+            <label for="self-description">Self-Description:</label>
+            <textarea id="self-description" name="self-description" rows="4" required></textarea>
+            
+            <button type="submit">Generate Resume</button>
+        </form>
+
+        <div id="resume-preview">
+            <!-- Preview content will be displayed here -->
+        </div>
+
+        <div id="ats-result">
+            <!-- ATS result will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('resume-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var experience = document.getElementById('experience').value;
+            var skills = document.getElementById('skills').value;
+            var education = document.getElementById('education').value;
+            var educationLevel = document.getElementById('education-level').value;
+            var languages = document.getElementById('languages').value;
+            var selfDescription = document.getElementById('self-description').value;
+
+            var keywords = [
+                "Marketing Specialist",
+                "developing marketing strategies",
+                "implementing marketing strategies",
+                "drive engagement",
+                "digital marketing",
+                "client growth",
+                "dynamic company"
+            ];
+
+            var resumeContent = name + " " + email + " " + phone + " " + experience + " " + skills + " " + education + " " + educationLevel + " " + languages + " " + selfDescription;
+            var atsFriendly = keywords.every(function(keyword) {
+                return resumeContent.includes(keyword);
+            });
+
+            var resumeHTML = `
+                <h2>${name}</h2>
+                <p>Email: ${email}</p>
+                <p>Phone: ${phone}</p>
+                <h3>Experience</h3>
+                <p>${experience}</p>
+                <h3>Skills</h3>
+                <p>${skills}</p>
+                <h3>Education</h3>
+                <p>${education}</p>
+                <p>Education Level: ${educationLevel}</p>
+                <h3>Languages</h3>
+                <p>${languages}</p>
+                <h3>Self-Description</h3>
+                <p>${selfDescription}</p>
+            `;
+
+            document.getElementById('resume-preview').innerHTML = resumeHTML;
+            document.getElementById('resume-preview').style.display = 'block';
+
+            var atsResult = atsFriendly ? "Your resume is ATS-friendly and contains all the required keywords." : "Your resume is missing some required keywords.";
+            document.getElementById('ats-result').innerHTML = `<strong>ATS Check:</strong> ${atsResult}`;
+            document.getElementById('ats-result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

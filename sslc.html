@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Colleges after SSLC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        li:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.03);
+        }
+        .college-info {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            transition: opacity 0.3s ease;
+        }
+        .college-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Best Colleges after SSLC</h1>
+        <label for="stream-select">Select Stream:</label>
+        <select id="stream-select" onchange="filterColleges()">
+            <option value="all">All</option>
+            <option value="science">Science</option>
+            <option value="commerce">Commerce</option>
+            <option value="arts">Arts</option>
+        </select>
+        <p>Here are some of the best colleges you can consider after completing your SSLC:</p>
+        <ul id="college-list">
+            <!-- College list here -->
+        </ul>
+    </div>
+
+    <script>
+        function toggleInfo(event) {
+            var collegeInfo = event.currentTarget.querySelector('.college-info');
+            collegeInfo.style.display = collegeInfo.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function filterColleges() {
+            var selectedStream = document.getElementById('stream-select').value;
+            var colleges = document.querySelectorAll('li');
+
+            colleges.forEach(function(college) {
+                var collegeStream = college.getAttribute('data-stream');
+
+                if (selectedStream === 'all' || collegeStream === selectedStream) {
+                    college.style.display = 'block';
+                } else {
+                    college.style.display = 'none';
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var collegeList = document.getElementById("college-list");
+            var colleges = [
+                {
+                    name: "Nagarjuna PU College",
+                    stream: "science",
+                    info: "Nagarjuna Pre University College is founded on the Philosophy of Quality Education, Human Values and Professionalism in Academics for Achievement of Excellence in Education",
+                    imageUrl: "https://images.uniapply.com/uploads/college/image/500/3613/Nagarjuna_Pre-University_College_6587_Building_UA_1.jpg",
+                    websiteUrl: "https://nagarjunapucollege.co.in/"
+                },
+                {
+                    name: "Mahesh PU College",
+                    stream: "science",
+                    info: "Mahesh PU College is committed to providing value-based education, nurturing the talents of students, and preparing them for a rapidly changing world.",
+                    imageUrl: "https://content.jdmagicbox.com/comp/bangalore/n7/080pxx80.xx80.181127213921.j9n7/catalogue/mahesh-pu-college-vidyaranyapura-bangalore-colleges-col69jd1wd.jpg",
+                    websiteUrl: "https://maheshpucollege.com/"
+                },
+                {
+                    name: "St Josephs PU College",
+                    stream: "science",
+                    info: "St Joseph's College Bangalore is ranked 2nd for BCA by India Today 2023, 18th by Outlook 2023 for Arts, and 18th by The Week 2023 for Arts.",
+                    imageUrl: "https://www.sjpuc.in/images/bg%20-%20Copy%20(2).jpeg",
+                    websiteUrl: "https://www.sjpuc.in/"
+                },
+                {
+                    name: "Mount Carmel PU College",
+                    stream: "science",
+                    info: "Mount Carmel PU College for Women, Bengaluru, managed by the Congregation of the Carmelite Sisters of St. Teresa, was established in 1948, to meet the escalating demand for the education of women in India.",
+                    imageUrl: "https://lh3.googleusercontent.com/p/AF1QipNMyt5CYZWts7Mjl4Mqc44tSUtNyp6zClA-ClVV=s1360-w1360-h1020",
+                    websiteUrl: "https://www.mountcarmelpucollege.org/"
+                },
+                {
+                    name: "Reva PU College",
+                    stream: "commerce",
+                    info: "REVA group of institutions is located in three campuses across Bangalore at Ganganagar, Sanjaynagar, and Kattigenahalli. The main campus at Kattigenahalli has amenities of International standards for its students and it is located just off the International Airport with 52 acres of lush green environment.",
+                    imageUrl: "https://www.revapucollege.edu.in/images/sanjaynagar/inner-images/san.jpg",
+                    websiteUrl: "https://www.revapucollege.edu.in/"
+                },
+                {
+                    name: "Vidhya Mandir PU College",
+                    stream: "science",
+                    info: "Vidya Mandir Ind. PU College came into being in the year 2001 with a modest strength of hundred students and nine lecturers.",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRLXVQyBM_VRNGiN3hjHURHwr_zzz62F52CtpYDvgGJRwxk0vaamzyYWLR10iwYXBEOUk&usqp=CAU",
+                    websiteUrl: "https://vmipuc.org/admission.php/"
+                },
+                {
+                    name: "sri sai PU College",
+                    stream: "science",
+                    info: "Study Boosting Environment Sri Sai Pu College campuses are well located and placed away from the city chaos to aid students’ learning experience. The classrooms are well lit and have state of the art infrastructure that includes labs, playground, study halls and much more.",
+                    imageUrl: "https://productimages.withfloats.com/tile/65c4bac8c355a61540e953d0.jpg",
+                    websiteUrl: "https://www.srisaipucollege.com/"
+                },
+                {
+                    name: "BEL PU College",
+                    stream: "commerce",
+                    info: "The Bharath Electronics PU College was established on 19th June 1981 and inaugurated by Shri. Shankar Rao, Hon. Education Minister, Karnataka Govt. in the presence of Shri. N L Krishnan, MD, BEL.",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7OPb1W_8-QuRAXaGF_ZMxT9CYjotK73c1bfXHBcBD2t5z6h_y9xWMspHtEhDk7wjk8n0&usqp=CAU",
+                    websiteUrl: "https://pu.beei.edu.in/"
+                },
+                {
+                    name: "CMR PU College",
+                    stream: "commerce",
+                    info: "CMR National Pre-University College is a community of learners, thinkers, doers and change-makers, where we stand for a sense of togetherness, collaboration and unity",
+                    imageUrl: "https://www.bangaloreeducation.com/photos/pre-university/campus-cmr.webp",
+                    websiteUrl: "https://npuc.cmr.ac.in/"
+                },
+                {
+                    name: "Sheshadripuram PU College",
+                    stream: "science",
+                    info: "To constantly strive towards meeting this social need by inclusion and expansion of new streams of educations in its institutions and provide world class infrastructure for learning, research and application of knowledge.",
+                    imageUrl: "https://content.jdmagicbox.com/v2/comp/bangalore/16/080p5603716/catalogue/seshadripuram-first-grade-college-bangalore-qv1z5.jpg",
+                    websiteUrl: "https://www.spucmain.ac.in/"
+                },
+                {
+                    name: "Baldwin Women's Methodist PU College",
+                    stream: "arts",
+                    info: "The Baldwin Women’s Methodist College is managed by the Methodist Church in India under the chairmanship of the Bishop of South India Regional Conference. The college is one of the oldest and well established women’s institutions started in the year 1995.",
+                    imageUrl: "https://content.jdmagicbox.com/comp/bangalore/c4/080p960240c4/catalogue/baldwin-methodist-college-richmond-town-bangalore-colleges-06hwhtk.jpg",
+                    websiteUrl: "https://www.baldwinwomensmethodistcollege.edu.in/"
+                }
+
+            ];
+
+            colleges.forEach(function(college) {
+                var listItem = document.createElement("li");
+                listItem.setAttribute("data-stream", college.stream);
+                listItem.innerHTML = `
+                    <div class="college-image" style="background-image: url('${college.imageUrl}');"></div>
+                    <strong>${college.name}</strong>
+                    <div class="college-info">
+                        <p>${college.info}</p>
+                        <p><a href="${college.websiteUrl}" target="_blank">Visit Website</a></p>
+                    </div>
+                `;
+                listItem.addEventListener('click', toggleInfo);
+                collegeList.appendChild(listItem);
+            });
+
+            filterColleges();  // Apply initial filter
+        });
+    </script>
+</body>
+</html>

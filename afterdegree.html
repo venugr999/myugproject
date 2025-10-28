@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Colleges for PG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        li:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.03);
+        }
+        .college-info {
+            display: bottom;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            transition: opacity 0.3s ease;
+        }
+        .college-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Best Colleges after Completing UG</h1>
+        <label for="stream-select">Select Stream:</label>
+        <select id="stream-select" onchange="filterColleges()">
+            <option value="all">All</option>
+            <option value="science">Science</option>
+            <option value="commerce">Commerce</option>
+            <option value="arts">Arts</option>
+        </select>
+        <p>Here are some of the best colleges you can consider for your PG:</p>
+        <ul id="college-list">
+            <!-- College list here -->
+        </ul>
+    </div>
+
+    <script>
+        function toggleInfo(collegeId) {
+            var collegeInfo = document.getElementById(collegeId);
+            collegeInfo.style.display = collegeInfo.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function filterColleges() {
+            var selectedStream = document.getElementById('stream-select').value;
+            var colleges = document.querySelectorAll('li');
+
+            colleges.forEach(function(college) {
+                var collegeStream = college.getAttribute('data-stream');
+
+                if (selectedStream === 'all' || collegeStream === selectedStream) {
+                    college.style.display = 'block';
+                } else {
+                    college.style.display = 'none';
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Populate the college list
+            var collegeList = document.getElementById("college-list");
+            var colleges = [ 
+{
+                    name: "Delhi university",
+                    stream: "science",
+                    info: "Delhi University, formally the University of Delhi, is a collegiate research central university located in Delhi, India. It was founded in 1922 by an Act of the Central Legislative Assembly and is recognized as an Institute of Eminence by the University Grants Commission.",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxhOrgTCeImx5PBtUKepkVJ8Xclq72z1-wyQ&s",
+                    websiteUrl: "https://www.du.ac.in/"
+                },
+{
+                    name: "Jawaharlal Nehru University ",
+                    stream: "science",
+                    info: "Jawaharlal Nehru University is a public research university located in Delhi, India. It was established in 1969 and named after Jawaharlal Nehru, India's first Prime Minister. The university is known for leading faculties and research emphasis on social sciences and applied sciences",
+                    imageUrl: "https://www.getadmision.com/wp-content/uploads/2021/12/684940-jnu1.jpg",
+                    websiteUrl: "https://jnu.ac.in/main/"
+                },
+
+
+            ];
+
+            colleges.forEach(function(college) {
+                var li = document.createElement("li");
+                li.setAttribute("data-stream", college.stream);
+                li.innerHTML = `
+                    <a href="${college.websiteUrl}" target="_blank">${college.name}</a>
+                    <div class="college-image" style="background-image: url('${college.imageUrl}')"></div>
+                    <div class="college-info">
+                        <p>${college.info}</p>
+                    </div>
+                `;
+                collegeList.appendChild(li);
+            });
+
+            filterColleges();
+        });
+    </script>
+</body>
+</html>

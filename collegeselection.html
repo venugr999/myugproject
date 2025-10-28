@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>College Selection</title>
+<style>
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+        0% { transform: translateY(-50px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: url('https://t3.ftcdn.net/jpg/02/39/85/60/360_F_239856087_FbOOldsRmp2jon66dHkjRkri3Sb6tqOz.jpg'); /* Add your background image URL here */
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        animation: fadeIn 2s ease-in;
+    }
+
+    #college-options {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f3e5f5; /* Light purple background color */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        animation: slideIn 1s ease-out;
+    }
+
+    .option {
+        width: 200px;
+        margin-bottom: 10px;
+        padding: 15px 20px;
+        border: 2px solid #9c27b0; /* Purple border color */
+        border-radius: 5px;
+        background-color: #9c27b0; /* Purple background color */
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .option:hover {
+        background-color: #7b1fa2; /* Darker purple hover color */
+        transform: translateY(-5px);
+    }
+
+    #college-options p {
+        margin-bottom: 15px;
+        color: #9c27b0; /* Purple color */
+    }
+
+    .pulse {
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(156, 39, 176, 0.4); }
+        70% { box-shadow: 0 0 20px 20px rgba(156, 39, 176, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(156, 39, 176, 0); }
+    }
+</style>
+</head>
+<body>
+<div id="college-options">
+    <p class="pulse">Select the education level for college options:</p>
+    <a href="aftersslc.html" class="option">After SSLC</a>
+    <a href="afterpu.html" class="option">After PU</a>
+    <a href="afterdegree.html" class="option">After Degree</a>
+</div>
+</body>
+</html>

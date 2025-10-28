@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aptitude Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .question-container {
+            width: 70%;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Ensures buttons wrap when screen is narrow */
+        }
+        .option {
+            margin: 10px;
+            background-color: #f0f0f0;
+            border: none;
+            color: black;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .option:hover {
+            background-color: #ddd;
+        }
+        .option.selected {
+            background-color: #c0c0c0;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button-container button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #submitBtn {
+            background-color: #4CAF50; 
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        #submitBtn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="question-container">
+        <h1>Aptitude Test</h1>
+        <div class="question">
+            <p id="questionText">Question 1: How do you handle stress?</p>
+            <div class="options">
+                <button class="option">Remain calm and find solutions</button>
+                <button class="option">Get anxious and overwhelmed</button>
+                <button class="option">Seek support from others</button>
+                <button class="option">Avoid stressful situations</button>
+            </div>
+        </div>
+        <div class="counter">
+            <p>Questions left to answer: <span id="questionCount">14</span></p>
+        </div>
+        <div class="button-container">
+            <button id="submitBtn">Submit</button>
+            <button id="skipBtn">Skip</button>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://mindlerimages.imgix.net/tinyimg/desktop.svg" >
+    </div>
+
+    <script>
+        var currentQuestion = 1;
+        var totalQuestions = 15;
+        var answers = [];
+        
+        var questions = [
+            "How do you handle stress?",
+            "Which work environment do you find most productive?",
+            "What motivates you to work hard?",
+            "How do you prioritize tasks?",
+            "What is your approach to teamwork?",
+            "How do you deal with failure?",
+            "What are your long-term career goals?",
+            "How do you manage your time?",
+            "What is your preferred learning style?",
+            "How do you handle feedback?",
+            "What are your strengths?",
+            "What are your weaknesses?",
+            "How do you handle conflicts?",
+            "What is your leadership style?",
+            "How do you adapt to change?"
+        ];
+
+        var options = [
+            ["Remain calm and find solutions", "Get anxious and overwhelmed", "Seek support from others", "Avoid stressful situations"],
+            ["A quiet, private office where you can work independently", "A collaborative open-plan office with a lot of interaction", "A fast-paced environment with constant challenges", "A structured environment with clear procedures and routines"],
+            ["Personal satisfaction and achievement", "Recognition and praise", "Financial rewards and benefits", "Opportunities for growth and advancement"],
+            ["By urgency and importance", "By deadline", "By difficulty level", "Randomly"],
+            ["Collaborate and share ideas", "Take the lead and delegate tasks", "Support team members and ensure harmony", "Work independently within the team"],
+            ["Analyze what went wrong and learn from it", "Get discouraged but try again", "Seek advice from others to improve", "Avoid similar tasks in the future"],
+            ["To become an expert in my field", "To achieve a leadership position", "To have a stable and secure job", "To work in a field I'm passionate about"],
+            ["Create a detailed schedule and stick to it", "Prioritize tasks and be flexible", "Focus on one task at a time", "Multitask and handle things as they come"],
+            ["Visual learning (seeing)", "Auditory learning (hearing)", "Kinesthetic learning (doing)", "Reading/writing learning"],
+            ["Welcome it and use it for improvement", "Feel defensive but consider it", "Seek clarification and understand it", "Avoid it and focus on my strengths"],
+            ["Problem-solving", "Communication", "Teamwork", "Creativity"],
+            ["Time management", "Public speaking", "Perfectionism", "Delegating tasks"],
+            ["Address it directly and find a solution", "Avoid confrontation", "Seek mediation", "Compromise for resolution"],
+            ["Lead by example", "Delegate tasks effectively", "Support and empower team members", "Adapt leadership style to the situation"],
+            ["Embrace it and see it as an opportunity", "Resist it and prefer stability", "Assess the situation and adapt accordingly", "Seek guidance and support from others"]
+        ];
+
+        var jobMappings = {
+            "Remain calm and find solutions": ["Project Manager", "Research Analyst"],
+            "Get anxious and overwhelmed": ["Data Entry Clerk"],
+            "Seek support from others": ["Customer Service Representative", "Social Worker"],
+            "Avoid stressful situations": ["Administrative Assistant", "Accountant"],
+            "A quiet, private office where you can work independently": ["Software Developer", "Graphic Designer"],
+            "A collaborative open-plan office with a lot of interaction": ["Sales Representative", "Public Relations Specialist"],
+            "A fast-paced environment with constant challenges": ["Entrepreneur", "Emergency Medical Technician"],
+            "A structured environment with clear procedures and routines": ["Quality Control Inspector", "Financial Analyst"],
+            "Personal satisfaction and achievement": ["Artist", "Freelancer"],
+            "Recognition and praise": ["Marketing Manager", "Public Relations Specialist"],
+            "Financial rewards and benefits": ["Investment Banker", "Financial Analyst"],
+            "Opportunities for growth and advancement": ["Human Resources Manager", "Operations Manager"],
+            "By urgency and importance": ["Project Coordinator", "Event Planner"],
+            "By deadline": ["Journalist", "Broadcast News Analyst"],
+            "By difficulty level": ["Mechanical Engineer", "Chemist"],
+            "Randomly": ["Social Media Coordinator", "Digital Marketing Specialist"],
+            "Collaborate and share ideas": ["UX Designer", "Architect"],
+            "Take the lead and delegate tasks": ["Team Leader", "Restaurant Manager"],
+            "Support team members and ensure harmony": ["Social Worker", "School Counselor"],
+            "Work independently within the team": ["Freelance Writer", "Independent Consultant"],
+            "Analyze what went wrong and learn from it": ["Quality Assurance Analyst", "Quality Engineer"],
+            "Get discouraged but try again": ["Customer Support Specialist", "Technical Support Engineer"],
+            "Seek advice from others to improve": ["Mental Health Counselor", "Career Coach"],
+            "Avoid similar tasks in the future": ["Risk Analyst", "Security Analyst"],
+            "To become an expert in my field": ["Research Scientist", "Professor"],
+            "To achieve a leadership position": ["Chief Executive Officer", "Executive Director"],
+            "To have a stable and secure job": ["Civil Servant", "Government Employee"],
+            "To work in a field I'm passionate about": ["Environmental Scientist", "Nonprofit Program Manager"],
+            "Create a detailed schedule and stick to it": ["Project Planner", "Logistics Coordinator"],
+            "Prioritize tasks and be flexible": ["Executive Assistant", "Personal Assistant"],
+            "Focus on one task at a time": ["Legal Assistant", "Paralegal"],
+            "Multitask and handle things as they come": ["Executive Secretary", "Office Administrator"],
+            "Visual learning (seeing)": ["Graphic Designer", "Photographer"],
+            "Auditory learning (hearing)": ["Musician", "Audio Engineer"],
+            "Kinesthetic learning (doing)": ["Athletic Trainer", "Physical Therapist"],
+            "Reading/writing learning": ["Writer", "Editor"],
+            "Welcome it and use it for improvement": ["Continuous Improvement Specialist", "Process Engineer"],
+            "Feel defensive but consider it": ["PR Manager", "Corporate Communications Manager"],
+            "Seek clarification and understand it": ["Interpreter", "Translator"],
+            "Avoid it and focus on my strengths": ["Entrepreneur", "Small Business Owner"],
+            "Problem-solving": ["Engineer", "Programmer"],
+            "Communication": ["Public Relations Specialist", "Communications Specialist"],
+            "Teamwork": ["Management Consultant", "Business Analyst"],
+            "Creativity": ["Art Director", "Creative Director"],
+            "Time management": ["Project Manager", "Event Planner"],
+            "Public speaking": ["Motivational Speaker", "Speechwriter"],
+            "Perfectionism": ["Quality Assurance Analyst", "Software Tester"],
+            "Delegating tasks": ["Team Leader", "Supervisor"],
+            "Address it directly and find a solution": ["Mediator", "Arbitrator"],
+            "Avoid confrontation": ["Conflict Resolution Specialist", "Negotiator"],
+            "Seek mediation": ["Social Worker", "Counselor"],
+            "Compromise for resolution": ["Customer Relations Manager", "Customer Experience Manager"],
+            "Lead by example": ["Business Leader", "Community Leader"],
+            "Delegate tasks effectively": ["Project Manager", "Operations Manager"],
+            "Support and empower team members": ["Human Resources Manager", "Executive Coach"],
+            "Adapt leadership style to the situation": ["Leadership Trainer", "Leadership Consultant"],
+            "Embrace it and see it as an opportunity": ["Change Management Consultant", "Organizational Development Specialist"],
+            "Resist it and prefer stability": ["Stability Analyst", "Risk Analyst"],
+            "Assess the situation and adapt accordingly": ["Business Consultant", "Strategic Planner"],
+            "Seek guidance and support from others": ["Mentor", "Advisor"],
+            "Face-to-face communication": ["Sales Manager", "Customer Service Manager"],
+            "Phone calls": ["Call Center Agent", "Telecommunications Specialist"],
+            "Emails": ["Email Marketing Manager", "Customer Support Representative"],
+            "Instant messaging": ["Social Media Manager", "Community Manager"],
+            "Personal fulfillment": ["Life Coach", "Motivational Speaker"],
+            "Recognition": ["Marketing Manager", "Public Relations Specialist"],
+            "Financial rewards": ["Investment Banker", "Financial Analyst"],
+            "Career advancement": ["Human Resources Manager", "Operations Manager"],
+            "Achieving personal goals": ["Life Coach", "Motivational Speaker"],
+            "Making a positive impact": ["Social Worker", "Community Organizer"],
+            "Recognition from peers": ["Marketing Manager", "Public Relations Specialist"],
+            "Financial success": ["Investment Banker", "Financial Analyst"],
+            "Using a planner or calendar": ["Executive Assistant", "Personal Assistant"],
+            "Creating to-do lists": ["Project Manager", "Event Planner"],
+            "Using digital tools or apps": ["Digital Marketing Specialist", "IT Specialist"],
+            "Keeping mental notes": ["Writer", "Editor"],
+            "Analyzing the problem thoroughly": ["Consultant", "Strategist"],
+            "Breaking it down into smaller steps": ["Project Manager", "Scrum Master"],
+            "Brainstorming solutions with others": ["Management Consultant", "Business Analyst"],
+            "Trial and error": ["Research Scientist", "Professor"]
+        };
+
+        function updateQuestion() {
+            document.getElementById("questionText").textContent = "Question " + currentQuestion + ": " + questions[currentQuestion - 1];
+            var optionsHTML = "";
+            options[currentQuestion - 1].forEach(function(option) {
+                optionsHTML += '<button class="option">' + option + '</button>';
+            });
+            document.querySelector(".options").innerHTML = optionsHTML;
+            document.querySelectorAll(".option").forEach(function(optionBtn) {
+                optionBtn.addEventListener("click", function() {
+                    selectOption(optionBtn);
+                });
+            });
+        }
+
+        function selectOption(optionBtn) {
+            var allOptionBtns = document.querySelectorAll(".option");
+            allOptionBtns.forEach(function(btn) {
+                btn.classList.remove("selected");
+            });
+            optionBtn.classList.add("selected");
+        }
+
+        function getJobRecommendations(answers) {
+            var recommendations = [];
+            answers.forEach(function(answer) {
+                var jobs = jobMappings[answer];
+                if (jobs) {
+                    jobs.forEach(function(job) {
+                        if (!recommendations.includes(job)) {
+                            recommendations.push(job);
+                        }
+                    });
+                }
+            });
+            return recommendations.join("\n");
+        }
+
+        document.getElementById("submitBtn").addEventListener("click", function() {
+            var selectedOption = document.querySelector(".option.selected");
+            if (!selectedOption) {
+                alert("Please select an option before submitting.");
+                return;
+            }
+            var answer = selectedOption.textContent.trim();
+            answers.push(answer);
+
+            if (currentQuestion < totalQuestions) {
+                currentQuestion++;
+                document.getElementById("questionCount").textContent = totalQuestions - currentQuestion;
+                updateQuestion();
+            } else {
+                var jobRecommendations = getJobRecommendations(answers);
+                alert("Congratulations! You have completed the aptitude test. Here are your job recommendations:\n\n" + jobRecommendations);
+            }
+        });
+
+        document.getElementById("skipBtn").addEventListener("click", function() {
+            if (currentQuestion < totalQuestions) {
+                currentQuestion++;
+                document.getElementById("questionCount").textContent = totalQuestions - currentQuestion;
+                updateQuestion();
+            } else {
+                var jobRecommendations = getJobRecommendations(answers);
+                alert("Congratulations! You have completed the aptitude test. Here are your job recommendations:\n\n" + jobRecommendations);
+            }
+        });
+
+        updateQuestion();
+    </script>
+</body>
+</html>

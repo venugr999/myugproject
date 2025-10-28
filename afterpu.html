@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Colleges for UG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT82e8s-HY0B39QskTcgmo-vJh3NGY-7soSTw&s");
+            background-size: cover;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        p {
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+li {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #d8bfd8; /* Light purple background color */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.college-info {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    transition: opacity 0.3s ease;
+}
+
+
+        li:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.03);
+        }
+
+        .college-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+
+
+        .college-info p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Best Colleges after Completing PU</h1>
+    <p>Here are some of the best colleges you can consider for your UG:</p>
+    <ul id="college-list">
+        <!-- College list here -->
+    </ul>
+
+    <script>
+        function toggleInfo(collegeId) {
+            var collegeInfo = document.getElementById(collegeId);
+            collegeInfo.style.display = collegeInfo.style.display === 'none' ? 'block' : 'none';
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Populate the college list
+            var collegeList = document.getElementById("college-list");
+            var colleges = [
+                {
+                    name: "Nagarjuna Degree College",
+                    info: "Nagarjuna Degree College is founded on the Philosophy of Quality Education, Human Values and Professionalism in Academics for Achievement of Excellence in Education.",
+                    imageUrl: "https://images.shiksha.com/mediadata/images/1599822584phpcVqYHb.jpeg",
+                    websiteUrl: "https://nagarjunapucollege.co.in/"
+                },
+                {
+                    name: "Mahesh Degree College",
+                    info: "Mahesh PU College is committed to providing value-based education, nurturing the talents of students, and preparing them for a rapidly changing world.",
+                    imageUrl: "https://collegemarker.com/college/home1.jpg",
+                    websiteUrl: "https://www.maheshpucngb.com/"
+                },
+                {
+                    name: "St Josephs University",
+                    info: "St Joseph's College Bangalore is ranked 2nd for BCA by India Today 2023, 18th by Outlook 2023 for Arts, and 18th by The Week 2023 for Arts.",
+                    imageUrl: "https://sjiibangalore.com/images/entrance.jpg",
+                    websiteUrl: "https://www.sjpuc.in/"
+                },
+                {
+                    name: "Mount Carmel College",
+                    info: "Mount Carmel College for Women, Bengaluru, managed by the Congregation of the Carmelite Sisters of St. Teresa, was established in 1948, to meet the escalating demand for the education of women in India.",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXcJtiu646mgp9z5M1_D4Y1pI1JedehiT5Fg&s",
+                    websiteUrl: "https://www.mountcarmelpucollege.org/"
+                },
+                {
+                    name: "Reva College",
+                    info: "REVA group of institutions is located in three campuses across Bangalore at Ganganagar, Sanjaynagar, and Kattigenahalli. The main campus at Kattigenahalli has amenities of International standards for its students and it is located just off the International Airport with 52 acres of lush green environment.",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR52Yi2eTf3ui8rWwAodlTk3As9wFOAYCzr1g&s",
+                    websiteUrl: "https://www.revapucollege.edu.in/"
+                },
+                {
+                    name: "Vidhya Mandir College",
+                    info: "Vidya Mandir Ind. PU College came into being in the year 2001 with a modest strength of hundred students and nine lecturers.",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOKT_Bh4kPTndzFMS0Bqcq8Zc-NyWXMSeCow&s",
+                    websiteUrl: "https://vmipuc.org/admission.php/"
+                },
+                {
+                    name: "Sri Sai College",
+                    info: "Study Boosting Environment Sri Sai Pu College campuses are well located and placed away from the city chaos to aid students’ learning experience. The classrooms are well lit and have state of the art infrastructure that includes labs, playground, study halls and much more.",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPHIgvOxYM0hsyUPhAncXSjTlFmFDz_zdHjQ&s",
+                    websiteUrl: "https://www.srisaipucollege.com/"
+                },
+                {
+                    name: "BEL College",
+                    info: "The Bharath Electronics PU College was established on 19th June 1981 and inaugurated by Shri. Shankar Rao, Hon. Education Minister, Karnataka Govt. in the presence of Shri. N L Krishnan, MD, BEL.",
+                    imageUrl: "https://www.static-contents.youth4work.com/university/Documents/Colleges/CollegeImages/8c4dcc46-cb4e-40ce-91f5-9ce56cc51f4a.jpg",
+                    websiteUrl: "https://pu.beei.edu.in/"
+                },
+                {
+                    name: "CMR College",
+                    info: "CMR National Pre-University College is a community of learners, thinkers, doers and change-makers, where we stand for a sense of togetherness, collaboration and unity.",
+                    imageUrl: "https://edufever.in/colleges/wp-content/uploads/2024/02/CMR-College-of-Nursing-Bangalore.jpg",
+                    websiteUrl: "https://npuc.cmr.ac.in/"
+                },
+                {
+                    name: "Sheshadripuram College",
+                    info: "To constantly strive towards meeting this social need by inclusion and expansion of new streams of educations in its institutions and provide world class infrastructure for learning, research and application of knowledge.",
+                    imageUrl: "https://careermudhra.com/wp-content/uploads/seshadripuram-degree-college-bangalore.jpg",
+                    websiteUrl: "https://www.spucmain.ac.in/"
+                },
+                {
+                    name: "New Horizon College",
+                    info: "We are committed to fostering an environment which inspires, innovates, and discovers. A place where youngsters may learn, create, and develop their academic and behavioral skills.",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvX7LADhLsrA2fkm8lByTzv9BQcGo4n54NNQ&s",
+                    websiteUrl: "https://nhpuc.in/"
+                },
+                {
+                    name: "Christ College",
+                    info: "Christ Junior College is a premier educational institution in Bangalore offering education at both the Karnataka Pre-University Course (PUC) and the International Baccalaureate Diploma Programme(IBDP) levels.",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSulIKTr8OQj1JmpqbA_GDE-y9saj2N5J5frw&s",
+                    websiteUrl: "https://www.christjuniorcollege.in/"
+                },
+                {
+                    name: "The Regency College",
+                    info: "Regency Pu College is one of the best PU colleges in Vidyaranyapura Bangalore. We understand the importance of quality education and strive to provide an exceptional learning experience for students.",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2hm_5lvsCx1lGcRp_tAraEx6kv_tODFb1A&s",
+                    websiteUrl: "https://regencypucollege.com/"
+                },
+                {
+                    name: "Sambram College",
+                    info: "The Institute was established by a team of experts who are a perfect blend of industry and academia. The founders of this institution strongly believe in the philosophy of imparting quality education with a focus on holistic development.",
+                    imageUrl: "https://collegekeeda.com/wp-content/uploads/2023/11/1552902664php6IZLcB.webp",
+                    websiteUrl: "https://sambramcollege.com/"
+                },
+                {
+                    name: "Sri Chaitanya College",
+                    info: "Sri Chaitanya Institutions – Leading the way in education through technology. Embrace the future of learning at Sri Chaitanya Institutions.",
+                    imageUrl: "https://content.jdmagicbox.com/comp/visakhapatnam/y1/0891px891.x891.140221175137.i9y1/catalogue/sri-chaitanya-junior-college-campus-marikavalasa-visakhapatnam-junior-colleges-4ex6rhy.jpg",
+                    websiteUrl: "https://srichaitanya.net/"
+                },
+
+                {
+                    name: "Loyola College",
+                    info: "Loyola College in Chennai, India, is a Catholic higher education institution founded in 1925. The institution is run by the Society of Jesus (Jesuits) and is known for its academic excellence.",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiJNkqITYNrF_a7PSzFqPR0PHjAk6Q2ZV2eQ&s",
+                    websiteUrl: "https://www.loyolacollege.edu/"
+                },
+                {
+                    name: "Jain College",
+                    info: "Jain College is one of the top PU colleges in Bangalore, offering a range of pre-university courses with a focus on holistic education and all-round development.",
+                    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQohB3mhSh-JMBKBR3nfa87_kH81aqGHd_JdA&s",
+                    websiteUrl: "https://www.jainuniversity.ac.in/"
+                }
+            ];
+
+            colleges.forEach(function(college, index) {
+                var li = document.createElement("li");
+                li.innerHTML = `
+                    <a href="${college.websiteUrl}" target="_blank">${college.name}</a>
+                    <div class="college-image" style="background-image: url('${college.imageUrl}')"></div>
+                    <div class="college-info" id="college-info-${index}">
+                        <p>${college.info}</p>
+                    </div>
+                `;
+                li.onclick = function() {
+                    toggleInfo(`college-info-${index}`);
+                };
+                collegeList.appendChild(li);
+            });
+        });
+    </script>
+</body>
+</html>

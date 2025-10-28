@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://thumbs.wbm.im/pw/small/d163e5e61c3b02ad65b00eef002b56ac.avif'); /* Add the URL of your cute background image here */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Add a white background with some transparency */
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .career-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .career-card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px 0 0 8px;
+        }
+        .career-card-content {
+            padding: 20px;
+            flex: 1;
+        }
+        .career-card h2 {
+            margin: 0;
+            color: #333;
+            font-size: 18px;
+        }
+        .career-card-content h2,
+        .career-card-content p {
+            margin: 0 0 10px 0;
+        }
+        .career-card-content p {
+            font-size: 16px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Careers</h1>
+        <div id="careers-list"></div>
+    </div>
+
+    <script>
+        const careers = {
+            accountant: {
+                description: "An accountant reviews and analyses financial records, keeping track of a company's or individual's income, expenditures, and tax liabilities. An accountant may also be involved in project planning, cost analysis, auditing, and financial decision-making. Some specialize in tax preparation and tax planning.",
+                image: "https://bachelors-completion.northeastern.edu/wp-content/uploads/2019/09/Accountant-Hero-1.jpg"
+            },
+            humanResourcesManager: {
+                description: "Human Resources Managers oversee the administrative functions of an organization, including recruitment, employee relations, and compliance with labor laws.",
+                image: "https://images.shiksha.com/mediadata/shikshaOnline/mailers/2021/naukri-learning/oct/28oct/What-is-human-resources.jpg"
+            },
+            investmentBanker: {
+                description: "Investment Bankers assist clients with financial services, including raising capital and advising on mergers and acquisitions.",
+                image: "https://iimskills.com/wp-content/uploads/2022/06/4-1.jpg"
+            },
+            itManager: {
+                description: "IT Managers oversee the information technology needs of an organization, ensuring systems are secure and efficient.",
+                image: "https://www.usnews.com/dims4/USNEWS/f5cba0c/2147483647/thumbnail/640x420/quality/85/?url=https%3A%2F%2Fwww.usnews.com%2Fcmsmedia%2Fbd%2F80%2F5f37c7a84105b5aff55a875b67f4%2F180919-itoffice-stock.jpg"
+            },
+            softwareDeveloper: {
+                description: "Software Developers create, test, and maintain software applications for various purposes.",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIptoihUmLsjRf6ejC-_BOK7pV9xRaF5pXiA&s"
+            },
+            administration: {
+                description: "Administrators manage office operations, ensuring that the workplace runs smoothly and efficiently.",
+                image: "https://assets.thehansindia.com/h-upload/2022/02/12/1274782-administration.webp"
+            },
+            education: {
+                description: "Professionals in education teach and support students in various subjects and educational levels.",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBX0AXEKDM0qmva68iuLPDALQ9PMKSnePJRw&s"
+            },
+            engineer: {
+                description: "Engineers apply scientific and mathematical principles to solve technical problems and create new products.",
+                image: "https://cdn.mos.cms.futurecdn.net/PFxP5HX8oNsLtufFRMumpc-1200-80.jpg"
+            },
+            graphicDesigner: {
+                description: "Graphic Designers create visual content to communicate messages through digital and print media.",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6F__P7OY7lqg6kRORqx3zuFyOyODR2K3DHw&s"
+            },
+            pharmacist: {
+                description: "Pharmacists dispense medications, provide drug information, and offer health advice to patients.",
+                image: "https://www.naukri.com/cloudgateway-fastforward/ff-content-services/v0/unauth/cms/photo?id=6ac0063a9ecb06c8540b1fac9b27081ad954be40166b98cad3753b405dbe751a2f5626ef99abe75a556fb92e040afb358cd82d2fecf83469ecf9c59d2ab144068f564d284ad2049157c82efdc6c9328a&postTypeId=c4eff10da33c562d3e88af8f60fcf6cecdf3e35370f49177&source=ff"
+            },
+            salesRepresentative: {
+                description: "Sales Representatives sell products or services to customers and build client relationships.",
+                image: "https://www.liveabout.com/thmb/ykj8Pvi6iEe-IKaBWNoSCf1XWnQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/what-does-a-sales-representative-do-526065_Final-edit-588dab73c7b5477fb474363d44d7f5c1.jpg"
+            },
+            agriculture: {
+                description: "Agriculture professionals work in farming, agribusiness, and related fields to produce food and other agricultural products.",
+                image: "https://okcredit-blog-images-prod.storage.googleapis.com/2021/04/agri2.jpeg"
+            },
+            businessAnalyst: {
+                description: "Business Analysts analyze organizational processes and recommend improvements to enhance efficiency and profitability.",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrbot_coNqkQpV6zlzhAFk45n-9hXvEOP9GA&s"
+            },
+            dataScience: {
+                description: "Data Scientists analyze large datasets to uncover trends and insights, informing business decisions.",
+                image: "https://assets-global.website-files.com/63ccf2f0ea97be12ead278ed/644a18b637053fa3709c5ba2_what-is-data-science.jpg"
+            },
+            eventPlanner: {
+                description: "Event Planners organize and coordinate events, ensuring everything runs smoothly from start to finish.",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRi4plXVPFJNbYJEExGv6KE5AXAF565Hh5Iw&s"
+            },
+            finance: {
+                description: "Finance professionals manage financial planning, investment strategies, and budget analysis for individuals or organizations.",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW90pHVig3xEI-_lBuk2nsLWa3JaXn4Kn8qw&s"
+            },
+            healthcare: {
+                description: "Healthcare professionals provide medical services and support to patients in various settings.",
+                image: "https://cdn.corporatefinanceinstitute.com/assets/healthcare-sector-1024x683.jpeg"
+            },
+            hospitality: {
+                description: "Hospitality workers ensure guests have a pleasant experience in hotels, restaurants, and other service establishments.",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5OiVSKW1eOovnh0MqgYY4Co2lBZHZxL4TFg&s"
+            },
+            managementAnalyst: {
+                description: "Management Analysts assess organizational practices and provide recommendations to improve efficiency.",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpeegdRswWWhumsRSehggQcTkSgAtY7tsbVQ&s"
+            },
+            nursing: {
+                description: "Nurses provide patient care, support doctors, and ensure medical procedures are followed correctly.",
+                image: "https://d23qowwaqkh3fj.cloudfront.net/wp-content/uploads/2024/05/Nursing.jpg"
+            },
+            psychologist: {
+                description: "Psychologists study mental processes and behavior, providing therapy and counseling services.",
+                image: "https://mytransform.com/wp-content/uploads/2022/10/how-to-become-a-psychologist.png"
+            },
+            realEstate: {
+                description: "Real Estate professionals help clients buy, sell, and rent properties, providing market advice and negotiation support.",
+                image: "https://etimg.etb2bimg.com/photo/82709573.cms"
+            },
+            scientist: {
+                description: "Scientists conduct research and experiments to advance knowledge in various scientific fields.",
+                image: "https://i.pinimg.com/originals/73/81/94/738194b0b588ca69bec33ba535a56582.jpg"
+            },
+            socialWorker: {
+                description: "Social Workers support individuals and families through challenging situations, providing counseling and resources.",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQapOYtZJ-SXpcEmctOzdrYtrF-f_XkRu9vA&s"
+            },
+            teacher: {
+                description: "Teachers educate students in various subjects, fostering knowledge and skills development.",
+                image: "https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/file-teaching-skills-1605625101.jpg"
+            },
+            veterinarian: {
+                description: "Veterinarians provide medical care to animals, diagnosing and treating various health issues.",
+                image: "https://storage.googleapis.com/joblist-content/hero-images/Becoming-a-Vet.png"
+            },
+            writer: {
+                description: "Writers create content for books, articles, scripts, and other forms of media, often specializing in specific genres.",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpzQ8KsxnkdIS0yXhjYpNBv1PKbPFSrPW3JQ&s"
+            }
+        };
+
+        function createCareerCard(career) {
+            const card = document.createElement('div');
+            card.className = 'career-card';
+
+            const img = document.createElement('img');
+            img.src = career.image;
+            img.alt = 'Career Image';
+
+            const content = document.createElement('div');
+            content.className = 'career-card-content';
+
+            const title = document.createElement('h2');
+            title.textContent = career.title;
+
+            const description = document.createElement('p');
+            description.textContent = career.description;
+
+            content.appendChild(title);
+            content.appendChild(description);
+            card.appendChild(img);
+            card.appendChild(content);
+
+            return card;
+        }
+
+        const careersList = document.getElementById('careers-list');
+
+        Object.keys(careers).forEach(key => {
+            const career = careers[key];
+            career.title = key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1').trim();
+            const card = createCareerCard(career);
+            careersList.appendChild(card);
+        });
+    </script>
+</body>
+</html>
